@@ -33,7 +33,7 @@ tags=`echo $azr | jq ".tags"`
 tt=`echo $tags | jq .`
 tcount=`echo $tags | jq '. | length'`
 if [ "$tcount" -gt "0" ]; then
-    printf "\t tags { \n" >> $prefix.tf
+    printf "\t tags = { \n" >> $prefix.tf
     tt=`echo $tags | jq .`
  
     keys=`echo $tags | jq 'keys'`

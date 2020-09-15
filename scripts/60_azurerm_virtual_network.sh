@@ -23,14 +23,13 @@ if [ "$count" -gt "0" ]; then
         rg=`echo $azr | jq ".[(${i})].resourceGroup" | sed 's/\./-/g' | tr -d '"'`
         id=`echo $azr | jq ".[(${i})].id" | tr -d '"'`
         loc=`echo $azr | jq ".[(${i})].location"`
-        
+
         prefix=`printf "%s__%s" $prefixa $rg`
         outfile=`printf "%s.%s__%s.tf" $tfp $rg $rname`
         echo $az2tfmess > $outfile
 
         dns=`echo $azr | jq ".[(${i})].dhcpOptions.dnsServers"`
         addsp=`echo $azr | jq ".[(${i})].addressSpace.addressPrefixes"`
- 
         printf "resource \"%s\" \"%s__%s\" {\n" $tfp $rg $rname >> $outfile
         printf "\tname = \"%s\"\n" $name >> $outfile
         printf "\t location = %s\n" "$loc" >> $outfile
@@ -68,7 +67,7 @@ if [ "$count" -gt "0" ]; then
             tt=`echo $tags | jq .`
             tcount=`echo $tags | jq '. | length'`
             if [ "$tcount" -gt "0" ]; then
-                printf "\t tags { \n" >> $outfile
+                printf "\t tags = { \n" >> $outfile
                 tt=`echo $tags | jq .`
                 keys=`echo $tags | jq 'keys'`
                 tcount=`expr $tcount - 1`
