@@ -107,8 +107,8 @@ if [ "$count" -gt "0" ]; then
         fi
         #
         #
-        printf "\t delete_data_disks_on_termination = \"false\"\n"  >> $outfile
-        printf "\t delete_os_disk_on_termination = \"false\"\n"  >> $outfile
+        #printf "\t delete_data_disks_on_termination = \"false\"\n"  >> $outfile
+        #printf "\t delete_os_disk_on_termination = \"false\"\n"  >> $outfile
         #
         if [ "$vmcn" != "null" ];then
         printf "os_profile {\n"  >> $outfile
@@ -154,6 +154,7 @@ if [ "$count" -gt "0" ]; then
             printf "\t enabled = \"true\"\n"  >> $outfile
             printf "\t storage_uri = \"%s\"\n" $vmbturi >> $outfile
             printf "}\n" >> $outfile
+            
         fi
         #
         if [ $vmtype = "Windows" ]; then
