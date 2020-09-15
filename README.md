@@ -1,5 +1,5 @@
 # az2tf
-Updated fork of az2tf by Andy Thomas(https://github.com/andyt530).  
+Updated fork of az2tf by Andy Thomas(https://github.com/andyt530).  I have updated requiirements and syndax to Terraform version 0.13 and azurerm version  2.27.0.  I am only updating the scripts as I need them.  If you stumble across this and find a script you need updated, lewt me know and I will address it whan I can.  
 
 ###  Development of this (bash shell) version has now stopped in favour of the new version
 
@@ -17,8 +17,8 @@ There should hopefully be no subsequent additions or deletions reported by the t
 
 ## Requirements & Prerequisites
 + The tool is written for the bash shell script and has been tested on a MAC
-+ Azure cli2 **version 2.0.55 or higher** needs to be installed and you need a login with at least "Read" priviledges
-+ terraform **version v0.11.11** needs to be installed
++ Azure cli2 **version 2.11.1 or higher** needs to be installed and you need a login with at least "Read" priviledges
++ terraform **version v0.13** needs to be installed
 + jq see:  https://stedolan.github.io/jq/  (On macOS also available via $ brew install jq)
 
 
