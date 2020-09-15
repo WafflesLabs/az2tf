@@ -73,9 +73,6 @@ if [ "$count" -gt "0" ]; then
 
                 printf "\t service_endpoints = %s\n" $sep >> $outfile
             fi
-            if [ "$rtrg" != "null" ]; then
-                printf "\t route_table_id = \"\${azurerm_route_table.%s__%s.id}\"\n" $rtrg $rtbid >> $outfile
-            fi
 
             printf "}\n" >> $outfile
             cat $outfile
