@@ -43,12 +43,8 @@ if [ "$count" -gt "0" ]; then
         printf "\t name = \"%s\"\n" $name >> $outfile
         printf "location = %s\n" "$loc" >> $outfile
         printf "\t resource_group_name = \"%s\"\n" $rgsource >> $outfile
-        #
-        printf "\t sku { \n" >> $outfile
-        
-        printf "\t\t name=\"%s\"\n" $sku >> $outfile
-        printf "\t } \n" >> $outfile
-        
+        printf "\t sku_name = \"%s\"\n" $sku >> $outfile
+               
         printf "\t tenant_id=\"%s\"\n" $ten >> $outfile
         if [ "$endep" != "null" ]; then
             printf "\t enabled_for_deployment=\"%s\"\n" $endep >> $outfile
