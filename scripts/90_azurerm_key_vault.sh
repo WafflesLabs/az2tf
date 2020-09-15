@@ -21,6 +21,8 @@ if [ "$count" -gt "0" ]; then
         kvshow=`az keyvault show -n $name -o json`
         id=`echo $azr | jq ".[(${i})].id" | tr -d '"'`
         loc=`echo $azr | jq ".[(${i})].location"`
+        sd=`echo $azr | jq ".[(${i})].properties.enableSoftDelete"`
+        sdd=`echo $azr | jq ".[(${i})].properties.softDeleteRetentionInDays"`
         
         sku=`echo $kvshow | jq ".properties.sku.name" | tr -d '"'`
         #if [ "$sku" = "premium" ]; then sku="Premium" ; fi
@@ -44,6 +46,11 @@ if [ "$count" -gt "0" ]; then
         printf "location = %s\n" "$loc" >> $outfile
         printf "\t resource_group_name = \"%s\"\n" $rgsource >> $outfile
         printf "\t sku_name = \"%s\"\n" $sku >> $outfile
+        printf "\t soft_delete_enabled = %s\n" $sd >> $outfile
+
+        if [ "$sd" == "true" ]; then
+            printf "\t soft_delete_retention_days = %s\n" $sdd >> $outfile
+        fi        
                
         printf "\t tenant_id=\"%s\"\n" $ten >> $outfile
         if [ "$endep" != "null" ]; then
