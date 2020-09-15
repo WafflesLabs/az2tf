@@ -62,7 +62,8 @@ if [ "$count" -gt "0" ]; then
             printf "resource \"%s\" \"%s__%s\" {\n" $tfp $rg $rname >> $outfile
             printf "\t name = \"%s\"\n" $name >> $outfile
             printf "\t virtual_network_name = \"%s\"\n" $vname >> $outfile
-            printf "\t address_prefix = \"%s\"\n" $sprefix >> $outfile
+            #need to add looping logic for mutiple prefixes
+            printf "\t address_prefixes = [\"%s\"]\n" $sprefix >> $outfile
             printf "\t resource_group_name = \"%s\"\n" $rgsource >> $outfile
             
 
