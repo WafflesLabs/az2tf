@@ -65,7 +65,7 @@ if [ "$count" -gt "0" ]; then
                 
                 printf "\t ip_configuration {\n" >> $outfile
                 printf "\t\t name = \"%s\" \n"  $ipcname >> $outfile
-                printf "\t\t subnet_id = \"\${azurerm_subnet.%s__%s.id}\"\n" $subrg $subname >> $outfile
+                printf "\t\t subnet_id = \"azurerm_subnet.%s__%s.id"\n" $subrg $subname >> $outfile
                 if [ "$subipalloc" != "Dynamic" ]; then
                     printf "\t\t private_ip_address = \"%s\" \n"  $privip >> $outfile
                 fi
