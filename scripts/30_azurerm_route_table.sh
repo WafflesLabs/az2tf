@@ -23,12 +23,15 @@ if [ "$count" != "0" ]; then
         routes=`echo $azr | jq ".[(${i})].routes"`
         prefix=`printf "%s__%s" $prefixa $rg`
         outfile=`printf "%s.%s__%s.tf" $tfp $rg $rname`
+        bgp=`echo $azr | jq ".[(${i})].disableBgpRoutePropagation"`
         echo $az2tfmess > $outfile
 
         printf "resource \"%s\" \"%s__%s\" {\n" $tfp $rg $rname >> $outfile
         printf "\t name = \"%s\"\n" $name >> $outfile
         printf "\t location = \"%s\"\n" $loc >> $outfile
         printf "\t resource_group_name = \"%s\"\n" $rgsource >> $outfile
+        printf "\t disable_bgp_route_propagation = %s\n" $bgp >> $outfile
+        
         #
         # Interate routes
         #
